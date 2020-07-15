@@ -14,6 +14,7 @@ class PostsController < ApplicationController
 
 	def create
 		post = Post.create(post_params)
+		# binding.pry
 		redirect_to post_path(post)
 	end
 
@@ -30,7 +31,10 @@ class PostsController < ApplicationController
 
   private
 
+  # params required in Posts Table and I added category_id to include category to be able 
+  # to show in 'posts/show.html.erb'
+
   def post_params
-    params.require(:post).permit(:title, :description)
+    params.require(:post).permit(:title, :description, :category_id)
   end
 end
